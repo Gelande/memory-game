@@ -1,0 +1,57 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    background-image: linear-gradient(red, yellow);
+}
+
+.memory-game {
+    height: 640px;
+    width: 640px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px; /*Pespectiva no eixo z*/
+}
+
+.card {
+    height: calc(25% - 10px);
+    width: calc(25% - 10px);
+    margin: 5px;
+    position: relative;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
+    cursor: pointer;
+    transform: scale(1);
+    transform-style: preserve-3d; /*Adiciona o 3d*/
+    transition: transform .9s; /*Movimento ao flip*/
+}
+
+.card:active {
+    transform: scale(0.97);
+    transition: transform .2s;
+}
+
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;    
+    position: absolute;
+    padding: 20px;
+    border-radius: 5px;
+    background-image: linear-gradient(yellow, red);
+    backface-visibility: hidden;
+}
+
+.card-front {
+    transform: rotateY(180deg);
+}
+
+/*Animação do flip card*/
+
+.card.flip {
+    transform: rotateY(180deg);
+}
